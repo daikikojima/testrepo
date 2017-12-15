@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb} %数学用のフォントが入っている
+\usepackage{bm}              %行列やベクトル用のフォントが入っている
+\usepackage{theorem}
+\usepackage{ascmac}
+\usepackage[dvips]{graphicx} %画像を挿入するための書式などが入っている
+\usepackage{here}
+\usepackage{amssymb}
+\usepackage{algorithm,algpseudocode}
+\newcommand{\vars}{\texttt}
+\newcommand{\func}{\textrm}
+\let\oldReturn\Return
+\renewcommand{\Return}{\State\oldReturn}
+\begin{document}
+\begin{algorithm}
+  \caption{Compute index of nearest grid point given particle position (1D)}
+  \label{nearestGridPoint}
+  \begin{algorithmic}[1]
+    \Function{FindMeshIndex}{$\vars{position}, \vars{nGrid}$}
+      \State $\vars{index} = \func{math.floor}(\vars{position} + 0.5) + ((\vars{nGrid}/2)+1)$
+      \If{$\vars{index} = -1$}
+        \State $\vars{index} = \vars{nGrid} - 1$
+      \EndIf
+      \Return $\vars{index}$
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+\end{document}
